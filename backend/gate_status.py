@@ -7,6 +7,7 @@ based on train schedules and current time.
 import math
 from datetime import datetime
 from backend.database import get_db
+from backend.live_status import get_train_delay
 
 # Status thresholds (minutes)
 CLOSED_THRESHOLD = 5       # Train 0-5 min away -> CLOSED
@@ -92,18 +93,28 @@ def calculate_gate_status(gate_id, now=None):
         if crossing_minutes is None:
             continue
 
-        # Time until this train crosses the gate
-        time_diff = crossing_minutes - current_minutes
+        # Adjust for live delay from Indian Railways API
+        live_delay = get_train_delay(row['train_number'])
+        adjusted_crossing = crossing_minutes + live_delay
+
+        # Time until this train crosses the gate (with live delay applied)
+        time_diff = adjusted_crossing - current_minutes
         # Handle midnight wrap
         if time_diff < -720:
             time_diff += 1440
         elif time_diff > 720:
             time_diff -= 1440
 
+        adjusted_h = int(adjusted_crossing // 60) % 24
+        adjusted_m = int(adjusted_crossing % 60)
+        estimated_time = f"{adjusted_h:02d}:{adjusted_m:02d}"
+
         train_info = {
             'train_number': row['train_number'],
             'train_name': row['train_name'],
-            'estimated_time': row['estimated_crossing_time'],
+            'estimated_time': estimated_time,
+            'scheduled_time': row['estimated_crossing_time'],
+            'delay_minutes': live_delay,
             'minutes_away': round(time_diff, 1),
             'prev_station': row['prev_station_code'],
             'next_station': row['next_station_code'],

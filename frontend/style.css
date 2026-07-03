@@ -275,6 +275,30 @@ body {
     text-align: center;
 }
 
+.delay-badge {
+    display: inline-block;
+    background: #ff5722;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.ontime-badge {
+    display: inline-block;
+    background: #4caf50;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
 /* Search page */
 .search-container {
     margin-bottom: 20px;

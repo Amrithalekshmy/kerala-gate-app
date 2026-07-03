@@ -14,6 +14,7 @@ from backend.gate_status import (
     haversine, calculate_gate_status
 )
 from backend.ml_predict import load_models, predict_delay, predict_closure_duration, models_available
+from backend.live_status import fetch_live_status, get_train_delay
 
 app = Flask(__name__,
             static_folder=os.path.join(os.path.dirname(__file__), '..', 'frontend'),
@@ -181,6 +182,26 @@ def get_train_position(train_number):
         'train_name': train_name,
         'schedule': [dict(s) for s in schedule],
         'upcoming_gates': upcoming_gates,
+    })
+
+
+@app.route('/api/trains/<train_number>/live')
+def get_train_live_status(train_number):
+    """Return real-time running status for a train from Indian Railways."""
+    status = fetch_live_status(train_number)
+    if not status:
+        return jsonify({'error': 'Could not fetch live status', 'train_number': train_number}), 404
+
+    return jsonify({
+        'train_number': status['train_number'],
+        'train_name': status['train_name'],
+        'message': status['message'],
+        'updated_time': status['updated_time'],
+        'is_running': status['is_running'],
+        'latest_delay_minutes': status['latest_delay_minutes'],
+        'average_delay_minutes': status['average_delay_minutes'],
+        'current_station': status['current_station'],
+        'stations': status['stations'],
     })
 
 

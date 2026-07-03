@@ -173,18 +173,25 @@ function renderGateDetail(gate) {
 
     let trainsHtml = '';
     if (gate.upcoming_trains && gate.upcoming_trains.length > 0) {
-        trainsHtml = gate.upcoming_trains.map(t => `
+        trainsHtml = gate.upcoming_trains.map(t => {
+            let delayBadge = '';
+            if (t.delay_minutes > 0) {
+                delayBadge = `<span class="delay-badge">+${t.delay_minutes} min late</span>`;
+            } else if (t.delay_minutes === 0) {
+                delayBadge = `<span class="ontime-badge">On time</span>`;
+            }
+            return `
             <div class="train-row">
                 <div>
                     <div class="train-name">${escapeHtml(t.train_name)}</div>
                     <div class="train-number">#${t.train_number} | ${t.prev_station} &rarr; ${t.next_station}</div>
                 </div>
                 <div>
-                    <div class="train-time">${t.estimated_time}</div>
+                    <div class="train-time">${t.estimated_time} ${delayBadge}</div>
                     <div class="train-eta">${Math.round(t.minutes_away)} min away</div>
                 </div>
             </div>
-        `).join('');
+        `}).join('');
     } else {
         trainsHtml = '<div class="no-trains">No upcoming trains in the next 15 minutes</div>';
     }

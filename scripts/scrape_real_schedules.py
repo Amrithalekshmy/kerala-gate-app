@@ -20,172 +20,111 @@ HEADERS = {
 }
 
 # Real Kerala train numbers — covering all major routes
+# Verified real Kerala train numbers from erail.in API
+# Last updated: 2026-07-02
 TRAIN_NUMBERS = [
-    # ==========================================
-    # LONG DISTANCE / EXPRESS (through Kerala)
-    # ==========================================
+    # Superfast / Express (daily Kerala services)
+    10215, 10216,  # Madgaon-ERS Express
+    11097, 11098,  # Poorna Express (PUNE-ERS)
+    12075, 12076,  # Jan Shatabdi (CLT-TVC)
+    12081, 12082,  # Jan Shatabdi (CAN-TVC)
+    12201, 12202,  # Garib Rath (LTT-TVCN)
+    12217, 12218,  # Sampark Kranti (TVCN-CDG)
+    12257, 12258,  # YPR-TVCN Garib Rath
+    12283, 12284,  # ERS-NZM Duronto
+    12431, 12432,  # TVC Rajdhani
+    12511, 12512,  # Rapti Sagar Express
+    12521, 12522,  # Rapti Sagar (BJU-ERS)
+    12617, 12618,  # Mangala Lakshadweep Express (ERS-NZM)
+    12623, 12624,  # TVC Mail (MAS-TVC)
+    12625, 12626,  # Kerala Express (TVC-NDLS)
+    12643, 12644,  # Swarna Jayanti Express
+    12645, 12646,  # Millennium Express (ERS-NZM)
+    12683, 12684,  # ERS-SMVB SF Express
+    12695, 12696,  # MAS-TVC SF Express
+    12697, 12698,  # MAS-TVC SF Express
+    12977, 12978,  # Maru Sagar Express (ERS-AII)
+    13351, 13352,  # DHN-ALLP Express
 
-    # Mangalore/Konkan → TVC (Coastal southbound)
-    16605,  # Mangala Lakshadweep Express (MAQ-TVC)
-    16345,  # Netravati Express (LTT-TVC)
-    12617,  # Mangala Express (CSMT-ERS)
-    16525,  # Kanniyakumari Express (SBC-CAPE)
-    12625,  # Kerala Express (NDLS-TVC → actually TVC-NDLS)
-    16859,  # Mangalore-Chennai Express (MAQ-MAS)
-    12695,  # Trivandrum Rajdhani (NDLS-TVC)
-    22113,  # Kochuveli Superfast
-    12431,  # Rajdhani Express (TVC-NZM)
-    16335,  # Nagercoil Express
-    12081,  # Jan Shatabdi (ERS-TVC, via Kottayam)
-    12623,  # Thiruvananthapuram Mail
-    12511,  # Rapti Sagar Express
-    16527,  # Guruvayur Express (YPR-GUV)
-    12201,  # Garib Rath (CSMT-TVC)
-    16347,  # Mangalore Express (via Kottayam)
+    # Vande Bharat / Premium
+    20631, 20632,  # MAQ-TVC Vande Bharat
+    20633, 20634,  # KGQ-TVC Vande Bharat
+    26651, 26652,  # SBC-ERS Vande Bharat
 
-    # Northbound equivalents
-    16606,  # Mangala Lakshadweep Express (TVC-MAQ)
-    16346,  # Netravati Express (TVC-LTT)
-    12618,  # Mangala Express (ERS-CSMT)
-    16526,  # Kanniyakumari Express (CAPE-SBC)
-    12626,  # Kerala Express (TVC-NDLS)
-    16860,  # Chennai-Mangalore Express (MAS-MAQ)
-    12696,  # Trivandrum Rajdhani (TVC-NDLS)
-    22114,  # Kochuveli Superfast
-    12432,  # Rajdhani Express (NZM-TVC)
-    16336,  # Nagercoil Express
-    12082,  # Jan Shatabdi (TVC-ERS)
-    12624,  # Thiruvananthapuram Mail
-    12512,  # Rapti Sagar Express
-    16528,  # Guruvayur Express (GUV-YPR)
-    12202,  # Garib Rath (TVC-CSMT)
-    16348,  # Mangalore Express (via Kottayam)
+    # Intercity / Short Express (daily, high frequency)
+    16127, 16128,  # Guruvayur-Chennai Express
+    16187, 16188,  # KIK-ERS Express
+    16301, 16302,  # Venad Express (SRR-TVC)
+    16303, 16304,  # Vanchinad Express (ERS-TVC)
+    16305, 16306,  # ERS-CAN Express
+    16307, 16308,  # ALLP-CAN Express
+    16313, 16314,  # TVCN-MAJN Antyodaya
+    16315, 16316,  # MYS-TVCN Express
+    16325, 16326,  # NIL-KTYM Express
+    16327, 16328,  # MDU-GUV Express
+    16329, 16330,  # NCJ-MAJN Amrit Bharat
+    16331, 16332,  # TVC-LTT Express
+    16335, 16336,  # GIMB-NCJ Express
+    16337, 16338,  # OKHA-ERS Express
+    16341, 16342,  # GUV-TVC Express
+    16343, 16344,  # Amritha Express (TVC-RMM)
+    16345, 16346,  # Netravati Express (LTT-TVC)
+    16347, 16348,  # Mangalore/Trivandrum Express
+    16349, 16350,  # Rajya Rani Express (TVCN-NIL)
+    16355, 16356,  # TVCN-MAJN Antyodaya
+    16366,          # NCJ-KTYM Express
+    16377, 16378,  # BNC-ERS Intercity
+    16381, 16382,  # Kanyakumari Express (PUNE-CAPE)
+    16525, 16526,  # CAPE-SBC Express
+    16561, 16562,  # YPR-TVCN AC Express
+    16603, 16604,  # Maveli Express (MAQ-TVC)
+    16605, 16606,  # Ernad Express (MAQ-TVC)
+    16629, 16630,  # Malabar Express (TVC-MAQ)
+    16649, 16650,  # Parasuram Express (MAQ-CAPE)
+    16729, 16730,  # MDU-PUU Express
+    16791, 16792,  # Palaruvi Express (TN-PGT)
 
-    # ==========================================
-    # INTERCITY / SHORT EXPRESS
-    # ==========================================
+    # Sabari / Other SF
+    20629, 20630,  # Sabari SF Express (SC-TVC)
+    20635, 20636,  # Anantapuri Express (MS-QLN)
+    20923, 20924,  # TEN Humsafar
+    22113, 22114,  # LTT-TVCN SF Express
+    22149, 22150,  # ERS-PUNE SF Express
+    22207, 22208,  # MAS-TVC AC SF Express
+    22503, 22504,  # Vivek Express (CAPE-DBRG)
+    22633, 22634,  # TVC-NZM SF Express
+    22639, 22640,  # MAS-ALLP SF Express
+    22641, 22642,  # TVC-SHM SF Express
+    22643, 22644,  # ERS-PNBE SF Express
+    22645, 22646,  # INDB-TVCN SF Express
+    22647, 22648,  # KRBA-TVCN SF Express
+    22653, 22654,  # TVC-NZM SF Express
+    22655, 22656,  # ERS-NZM SF Express
+    22659, 22660,  # TVCN-YNRK SF Express
+    22669, 22670,  # ERS-PNBE SF Express
+    22815, 22816,  # BSP-ERS SF Express
+    22877, 22878,  # HWH-ERS Antyodaya
 
-    # Venad Express pair (SRR-TVC via Kottayam, very popular)
-    16301,  # Venad Express (SRR-TVC)
-    16302,  # Venad Express (TVC-SRR)
+    # Long Distance (less frequent)
+    15607, 15608,  # Aronai Express (TVC-SCL)
+    17421, 17422,  # TPTY-QLN Express
+    18189, 18190,  # TATA-ERS Express
+    18501, 18502,  # VSKP-QLN Express
+    18567, 18568,  # VSKP-QLN Express
+    19259, 19260,  # TVCN-BVC Express
+    19577, 19578,  # TEN-JAM Express
+    22619, 22620,  # BSP-TEN SF Express
 
-    # Vanchinad Express (SRR-TVC via Kottayam)
-    16303,  # Vanchinad Express (SRR-TVC)
-    16304,  # Vanchinad Express (TVC-SRR)
-
-    # Ernad Express
-    16305,  # Ernad Express (ERS-CAN)
-    16306,  # Ernad Express (CAN-ERS)
-
-    # Maveli Express (TVC-MAQ)
-    16603,  # Maveli Express (TVC-MAQ)
-    16604,  # Maveli Express (MAQ-TVC)
-
-    # Parasuram Express (MAQ-TVC)
-    16649,  # Parasuram Express (MAQ-TVC)
-    16650,  # Parasuram Express (TVC-MAQ)
-
-    # Malabar Express (TVC-MAQ)
-    16629,  # Malabar Express (TVC-MAQ)
-    16630,  # Malabar Express (MAQ-TVC)
-
-    # Jan Shatabdi (TVC-CLT)
-    12075,  # Jan Shatabdi (TVC-CLT)
-    12076,  # Jan Shatabdi (CLT-TVC)
-
-    # ERS-TVC Jan Shatabdi
-    12077,  # Jan Shatabdi (ERS-TVC)
-    12078,  # Jan Shatabdi (TVC-ERS)
-
-    # Ernakulam-Kannur Intercity
-    12083,  # ERS-CAN Express
-    12084,  # CAN-ERS Express
-
-    # Kanyakumari / Nagercoil area
-    16723,  # Ananthapuri Express (MAQ-TVC)
-    16724,  # Ananthapuri Express (TVC-MAQ)
-
-    # ==========================================
-    # PASSENGER / MEMU / DMU (frequent, short)
-    # ==========================================
-
-    # ERS-TVC Passenger/MEMU
-    56361,  # Passenger (ERS-TVC)
-    56362,  # Passenger (TVC-ERS)
-    56371,  # Passenger (ERS-QLN)
-    56372,  # Passenger (QLN-ERS)
-
-    # CLT-ERS Passenger
-    56381,  # Passenger (CLT-ERS)
-    56382,  # Passenger (ERS-CLT)
-
-    # CAN-CLT Passenger
-    56365,  # Passenger (CAN-CLT)
-    56366,  # Passenger (CLT-CAN)
-
-    # SRR-PGT (Shoranur-Palakkad)
-    56651,  # Passenger (SRR-PGT)
-    56652,  # Passenger (PGT-SRR)
-    56653,  # Passenger (SRR-PGT)
-    56654,  # Passenger (PGT-SRR)
-
-    # SRR-NIL (Shoranur-Nilambur)
-    56601,  # Passenger (SRR-NIL)
-    56602,  # Passenger (NIL-SRR)
-    56603,  # Passenger (SRR-NIL)
-    56604,  # Passenger (NIL-SRR)
-
-    # TCR-GUV (Thrissur-Guruvayur)
-    56605,  # Passenger (TCR-GUV)
-    56606,  # Passenger (GUV-TCR)
-
-    # MEMU trains
-    66301,  # MEMU (ERS-CLT)
-    66302,  # MEMU (CLT-ERS)
-    66303,  # MEMU (ERS-TVC)
-    66304,  # MEMU (TVC-ERS)
-    66305,  # MEMU (ERS-CAN)
-    66306,  # MEMU (CAN-ERS)
-    66309,  # MEMU (ERS-SRR)
-    66310,  # MEMU (SRR-ERS)
-    66311,  # MEMU (TVC-QLN)
-    66312,  # MEMU (QLN-TVC)
-
-    # KYJ-PUU (Kayamkulam-Punalur)
-    56393,  # Passenger (KYJ-PUU)
-    56394,  # Passenger (PUU-KYJ)
-
-    # QLN-TVC Passenger
-    56375,  # Passenger (QLN-TVC)
-    56376,  # Passenger (TVC-QLN)
-
-    # TVC-PASA (south)
-    56377,  # Passenger (TVC-NCJ)
-    56378,  # Passenger (NCJ-TVC)
-
-    # Kottayam line passengers
-    56385,  # Passenger (ERS-KTYM)
-    56386,  # Passenger (KTYM-ERS)
-
-    # ==========================================
-    # ADDITIONAL TRAINS FOR COVERAGE
-    # ==========================================
-    20923,  # Superfast (CBE-TVC)
-    20924,  # Superfast (TVC-CBE)
-    16341,  # Trivandrum Express (SRR-TVC)
-    16342,  # Trivandrum Express (TVC-SRR)
-    16307,  # Alleppey Express (SRR-ALLP)
-    16308,  # Alleppey Express (ALLP-SRR)
-    16343,  # Trivandrum Express
-    16344,  # Trivandrum Express
-    16349,  # Mangalore Express
-    16350,  # Mangalore Express
-    16329,  # Udyogamandal Express
-    16330,  # Udyogamandal Express
-    22633,  # Superfast (TVC-MAQ)
-    22634,  # Superfast (MAQ-TVC)
-    16609,  # Talghat Express (MAQ-TVC)
-    16610,  # Talghat Express (TVC-MAQ)
+    # Passenger / MEMU (verified real numbers)
+    56101, 56102,  # QLN-NCJ Passenger
+    56303, 56304,  # QLN-TVC Passenger
+    56307,          # QLN-TVC Passenger
+    56313, 56314,  # GUV-ERS Passenger
+    56317, 56318,  # GUV-ERS Passenger
+    56705, 56706,  # PUU-CAPE Passenger
+    66305, 66306,  # CAPE-QLN MEMU
+    66319, 66320,  # SRR-ERS MEMU
+    66609, 66610,  # PGT-ERS MEMU
 ]
 
 # Remove duplicates and sort
